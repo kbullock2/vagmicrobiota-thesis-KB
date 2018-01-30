@@ -1,0 +1,4 @@
+#Kchoosermotherdaughter.batch.txt
+#9/1/16
+
+Kchooser Lcrispatus.fasta

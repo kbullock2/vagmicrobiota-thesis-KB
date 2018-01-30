@@ -1,0 +1,14 @@
+#PBS -A youngvi_fluxm
+#PBS -N Kchoosermotherdaughter_report.txt
+#PBS -q fluxm
+#PBS -M bullockk@umich.edu
+#PBS -m abe
+#PBS -V
+#PBS -j oe
+##PBS -t 1-200  
+#PBS -l nodes=10,qos=flux,walltime=96:00:00,mem=240GB
+
+cd $PBS_O_WORKDIR
+~/kSNP3/Kchooser
+/scratch/youngvi_fluxm/bullockk/motherdaughtergenomes/bin/Lcrispatus.fasta
+echo "done"
