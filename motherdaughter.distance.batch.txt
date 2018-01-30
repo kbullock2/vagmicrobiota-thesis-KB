@@ -1,0 +1,14 @@
+#3.17.16
+#batch file for creating beta-yc PCoA axes and NMDS plot axes; .shared and .dist files from motherdaughter.batch.txt are the inputs you need
+##please note! the file names are labeled "thetayc" but this is indeed a beta-yc analysis
+
+#dist.shared(shared=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.shared, calc=thetayc, processors=10)
+#sub.sample(shared=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.shared, size=4206)
+#dist.shared(shared=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.0.03.subsample.shared, calc=thetayc, processors=10)
+#pcoa(phylip=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.thetayc.0.03.lt.dist)
+#nmds(phylip=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.thetayc.0.03.lt.dist)
+#pcoa(phylip=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.0.03.subsample.thetayc.0.03.lt.dist)
+#nmds(phylip=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.0.03.subsample.thetayc.0.03.lt.dist)
+#get.oturep(phylip=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.thetayc.0.03.lt.dist, list=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.list)
+#corr.axes(shared=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.0.03.subsample.shared, axes=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.0.03.subsample.thetayc.0.03.lt.pcoa.axes)
+#corr.axes(shared=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.shared, axes=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.thetayc.0.03.lt.pcoa.axes)

@@ -1,0 +1,13 @@
+#PBS -A youngvi_fluxm
+#PBS -N motherdaughter_report.txt
+#PBS -q fluxm
+#PBS -M bullockk@umich.edu
+#PBS -m abe
+#PBS -V
+#PBS -j oe
+#PBS -l nodes=10,qos=flux,walltime=24:00:00,mem=240GB
+
+cd $PBS_O_WORKDIR
+pwd
+mothur motherdaughter.batch.txt
+echo "done"

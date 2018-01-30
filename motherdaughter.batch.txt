@@ -1,0 +1,49 @@
+#batch file for running motherdaughter.files through Mothur(version)
+#5/18/2016
+
+#make.contigs(file=motherdaughter.files.txt, processors=10)
+#summary.seqs(fasta=motherdaughter.files.trim.contigs.fasta, processors=10)
+#screen.seqs(fasta=motherdaughter.files.trim.contigs.fasta, group=motherdaughter.files.contigs.groups, maxambig=0, maxlength=275, processors=10)
+#unique.seqs(fasta=motherdaughter.files.trim.contigs.good.fasta)
+#count.seqs(name=motherdaughter.files.trim.contigs.good.names, group=motherdaughter.files.contigs.good.groups)
+#summary.seqs(count=motherdaughter.files.trim.contigs.good.count_table, processors=10)
+#pcr.seqs(fasta=silva.bacteria.fasta, start=11894, end=25319, keepdots=F, processors=10)
+#system(mv silva.bacteria.pcr.fasta silva.v4.fasta)
+#summary.seqs(fasta=silva.v4.fasta, processors=10)
+#align.seqs(fasta=motherdaughter.files.trim.contigs.good.unique.fasta, reference=silva.v4.fasta, processors=10)
+#summary.seqs(fasta=motherdaughter.files.trim.contigs.good.unique.align, count=motherdaughter.files.trim.contigs.good.count_table, processors=10)
+#screen.seqs(fasta=motherdaughter.files.trim.contigs.good.unique.align, count=motherdaughter.files.trim.contigs.good.count_table, summary=motherdaughter.files.trim.contigs.good.unique.summary, start=1968, end=11550, maxhomop=8, processors=10)
+#summary.seqs(fasta=current, count=current, processors=10)
+#filter.seqs(fasta=motherdaughter.files.trim.contigs.good.unique.good.align, vertical=T, trump=., processors=10)
+#unique.seqs(fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.fasta, count=motherdaughter.files.trim.contigs.good.good.count_table)
+#pre.cluster(fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.fasta, count=motherdaughter.files.trim.contigs.good.unique.good.filter.count_table, diffs=2, processors=10)
+#chimera.uchime(fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.fasta, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.count_table, dereplicate=t, processors=10)
+#remove.seqs(fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.fasta, accnos=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.denovo.uchime.accnos, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.denovo.uchime.pick.count_table)
+#summary.seqs(fasta=current, count=current, processors=10)
+#classify.seqs(fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.fasta, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.denovo.uchime.pick.count_table, reference=trainset9_032012.pds.fasta, taxonomy=trainset9_032012.pds.tax, cutoff=80)
+#remove.lineage(fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.fasta, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.denovo.uchime.pick.count_table, taxonomy=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pds.wang.taxonomy, taxon=Chloroplast-Mitochondria-unknown-Archaea-Eukaryota)
+#count.seqs(name=current, group=current)
+
+##error analysis (not used for this project, but can be implemented if needed):
+#get.groups(count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.uchime.pick.pick.count_table, fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.fasta, groups=Mock)
+#seq.error(fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.fasta, reference=HMP_MOCK.v35.fasta, aligned=F)
+#dist.seqs(fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.fasta, cutoff=0.10)
+#cluster(column=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.dist, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.uchime.pick.pick.pick.count_table)
+#make.shared(list=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.an.unique_list.list, count=motherdaughter.files.contigs.good.unique.good.filter.unique.precluster.uchime.pick.pick.pick.count_table, label=0.03)
+#rarefaction.single(shared=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.an.unique_list.shared)
+
+#remove.groups(count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.uchime.pick.pick.count_table, fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.fasta, taxonomy=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pds.wang.pick.taxonomy, groups=BAL1-BAL2-BAL3-brush1-brush2-brush3-tissue1-tissue2-tissue3)
+##fasta file name used in dist.seqs depends on if you do remove.groups; if you do it fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.fasta, if you don't do it fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.fasta
+##this will also affect file names in all subsequent steps
+
+#dist.seqs(fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.fasta, cutoff=0.20)
+#cluster(column=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.dist, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.denovo.uchime.pick.pick.count_table)
+##optional cluster, if dataset is very large:
+##cluster.split(fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.fasta, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.uchime.pick.pick.pick.count_table, taxonomy=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pds.wang.pick.pick.taxonomy, splitmethod=classify, taxlevel=4, cutoff=0.10, processors=10)
+#make.shared(list=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.list, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.denovo.uchime.pick.pick.count_table, label=0.03)
+#classify.otu(taxonomy=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pds.wang.pick.taxonomy, list=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.list, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.denovo.uchime.pick.pick.count_table, label=0.03)
+#phylotype(taxonomy=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pds.wang.pick.taxonomy)
+#classify.otu(list=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pds.wang.pick.pick.tx.list, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.uchime.pick.pick.count_table, taxonomy=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pds.wang.pick.taxonomy, label=1)
+
+##to get sequences to blast
+#get.oturep(column=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.dist, count=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.denovo.uchime.pick.pick.count_table, fasta=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.fasta, list=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.list, label=0.03)
