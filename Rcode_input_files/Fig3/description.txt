@@ -1,0 +1,1 @@
+This subfolder contains all of the input files necessary to create the heatmap in Fig3.
