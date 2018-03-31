@@ -1,6 +1,5 @@
 #3.17.16
-#batch file for creating beta-yc PCoA axes and NMDS plot axes; .shared and .dist files from motherdaughter.batch.txt are the inputs you need
-##please note! the file names are labeled "thetayc" but this is indeed a beta-yc analysis
+#batch file for creating theta-yc PCoA axes and NMDS plot axes; .shared and .dist files from motherdaughter.batch.txt are the inputs you #need
 
 #dist.shared(shared=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.shared, calc=thetayc, processors=10)
 #sub.sample(shared=motherdaughter.files.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.an.unique_list.shared, size=4206)
